@@ -34,6 +34,46 @@ Insira um manual ou um script para auxiliar ainda mais.
 ## Uso 
 Explique como usar seu projeto, caso haja algum passo a passo após o comando de execução.
 
+exemplos de comandos:
+
+```haskell
+*Main> adj g 'a'
+output: "bxw"
+
+*Main> isAdj g 'a' 'b'
+output: True
+
+*Main> isWalk g ['a', 'b', 'c']
+output: True
+
+*Main> connectNearestUe ['a', 'b', 'c']
+output: [Ue ('a','b'),Ue ('b','c')]
+
+*Main> isTrail g ['a', 'b', 'c']
+output: True
+
+*Main> open g ['a', 'b']
+output: True
+
+*Main> close g ['a', 'b', 'y']
+output: True
+
+*Main> paths g [] 'a' 'c'
+output: ["cba","czba","cwa"]
+
+*Main> dfs g 'b'
+output: "baxwcz"
+
+*Main> bfs g [] ['a']
+output: "abxwcz"
+
+*Main> bfsL g [] [('a',0)]
+output: [('a',0),('b',1),('x',1),('w',1),('c',2),('z',2)]
+
+*Main> sPaths g 'a' 'c'
+output: Just ["cba","cwa"]
+
+```
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.
 
