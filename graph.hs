@@ -116,3 +116,8 @@ getFriends = adj
 -- Retorna amigos em comum entre elemento 'a' e 'b'
 getCommonFriends :: Eq a => Graph a -> a -> a -> [a]
 getCommonFriends g a b = getFriends g a `intersect` getFriends g b
+
+-- Concatena duas listas sem inserir duplicatas
+concatList:: [Int] -> [Int] -> [Int]
+concatList x y = nub (x ++ y)
+
