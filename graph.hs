@@ -2,6 +2,7 @@
 import Control.Monad ( join )
 import Data.List ( find, (\\), nub, intersect )
 import Data.Maybe ( catMaybes, fromJust )
+import qualified GHC.Types
 
 
 newtype Uedge a = Ue (a,a) deriving Show
@@ -118,3 +119,6 @@ getCommonFriends g a b = getFriends g a `intersect` getFriends g b
 concatList:: [Int] -> [Int] -> [Int]
 concatList x y = nub (x ++ y)
 
+-- Conta quantos amigos o nó 'a' tem em comum com o nó 'b'
+countCommonFriends :: Eq a => Graph a -> a -> a -> Int
+countCommonFriends g a b = length(getCommonFriends g a b)
