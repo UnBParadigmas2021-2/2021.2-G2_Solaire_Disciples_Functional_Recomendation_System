@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 import Control.Monad ( join )
-import Data.List ( find, (\\), nub )
+import Data.List ( find, (\\), nub, intersect )
 import Data.Maybe ( catMaybes, fromJust )
 
 
@@ -60,7 +60,7 @@ close g l = not $ open g l
 
 paths :: Eq a => Graph a -> [a] -> a -> a -> [[a]]
 paths g v a b | a == b = [[a]]
-              | a /= b = (b:) <$> concat (paths g (v++[b]) a <$> (adj g b \\ v))
+              | a /= b = (b:) <$> concat (paths g (v++[b]) a <$> adj g b \\ v)
 
 step_ :: Eq a => Graph a -> ([a], [a]) -> ([a], [a])
 step_ _ (v,[]) = (v,[])
@@ -97,13 +97,18 @@ sPaths g a b = do
                   adj_ b lb = catMaybes [find ((v, lb-1) ==) bfs | v <- adj g b]
 
 remove :: Eq a => a -> [a] -> [a]
-remove element list = filter (\e -> e/=element) list
+remove element = filter (\e -> e/=element)
 
+
+-- TODO
 foaf :: Eq a => Graph a -> a -> [[a]]
 foaf g a = map (getFriends g) (getFriends g a)
 
+-- Retorna lista de elementos a serem ignorados
+-- No caso, retorna lista com o elemento 'a' (inicial) e os amigos de 'a'
 getIgnoredElements :: Eq a => Graph a -> a -> [a]
-getIgnoredElements g a = a : adj g a
+getIgnoredElements g a = a : getFriends g a
 
+-- Retorna amigos do elemento 'a'
 getFriends :: Eq a => Graph a -> a -> [a]
 getFriends = adj
