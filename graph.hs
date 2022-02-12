@@ -112,3 +112,7 @@ getIgnoredElements g a = a : getFriends g a
 -- Retorna amigos do elemento 'a'
 getFriends :: Eq a => Graph a -> a -> [a]
 getFriends = adj
+
+-- Retorna amigos em comum entre elemento 'a' e 'b'
+getCommonFriends :: Eq a => Graph a -> a -> a -> [a]
+getCommonFriends g a b = intersect (getFriends g a) (getFriends g b)
