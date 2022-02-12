@@ -17,6 +17,7 @@
 | 17/0122468  |  Nilvan Peres Costa |
 | 18/0105345  |  Lucas Lima Ferraz |
 | 18/0078640  |  Yuri Alves Bacarias |
+| 17/0141161  |  Erick Giffoni |
 
 ## Sobre 
 Descreva o seu projeto em linhas gerais. 
