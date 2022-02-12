@@ -59,13 +59,7 @@ paths :: Eq a => Graph a -> [a] -> a -> a -> [[a]]
 paths g v a b | a == b = [[a]]
               | a /= b = (b:) <$> concat (paths g (v++[b]) a <$> (adj g b \\ v))
 
-
 step_ :: Eq a => Graph a -> ([a], [a]) -> ([a], [a])
--- step g a = step_ g ([],[a])
---step_ _ (v,[]) = (v,[])
---step_ g (v,(h:q)) = (v++[h], q++ (((adj g h) \\ v) \\ q) )
---bfs g a = fst $ fromJust $ find (\(_,q)->null q) $ iterate (step_ g) ([],[a])
-
 step_ _ (v,[]) = (v,[])
 step_ g (v,h:q) = (v++[h], ((adj g h \\ v) \\ q) ++ q )
 
@@ -76,9 +70,6 @@ bfs :: Eq a => Graph a -> [a] -> [a] -> [a]
 bfs _ _ [] = []
 bfs g v (h:qs) = h : bfs g (h:v) (qs++((adj g h \\ v) \\ qs))
 
---dfs :: Eq a => Graph a -> [a] -> [a] -> [a]
---dfs _ _ [] = []
---dfs g v (h:qs) = h : (dfs g (h:v) ((((adj g h) \\) v \\ qs)++qs))
 
 bfsl :: Eq a => Graph a -> a -> [(a, Int)]
 bfsl g v = bfsL g [] ([(v,0) | elem v $ vertices g])
