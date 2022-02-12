@@ -102,3 +102,6 @@ remove element list = filter (\e -> e/=element) list
 foaf :: Eq a => Graph a -> a -> [[a]]
 foaf g a = map (adj g) (adj g a)
 
+getIgnoredElements :: Eq a => Graph a -> a -> [a]
+getIgnoredElements g a = [a] ++ adj g a
+
