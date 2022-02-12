@@ -96,13 +96,10 @@ sPaths g a b = do
                   bfs = bfsl g a
                   adj_ b lb = catMaybes [find ((v, lb-1) ==) bfs | v <- adj g b]
 
-remove :: Eq a => a -> [a] -> [a]
-remove element = filter (\e -> e/=element)
 
-
--- TODO
-foaf :: Eq a => Graph a -> a -> [[a]]
-foaf g a = map (getFriends g) (getFriends g a)
+-- amigo dos amigo
+foaf :: Eq a => Graph a -> a -> [a]
+foaf g a = nub(join(map (getFriends g) (getFriends g a))) \\ getIgnoredElements g a
 
 -- Retorna lista de elementos a serem ignorados
 -- No caso, retorna lista com o elemento 'a' (inicial) e os amigos de 'a'
