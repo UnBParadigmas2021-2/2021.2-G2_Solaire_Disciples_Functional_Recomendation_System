@@ -1,30 +1,22 @@
 # RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
 
-**!! *Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(Paradigma)_(NomeDoProjeto)*. !!** 
 
-Paradigmas:
- - Funcional
- - Logico
- - SMA
-
-**!! *Não coloque os nomes dos alunos no título do repositório*. !!**
-
-**!! *Exemplo de título correto: 2021.2_G1_Logico_ProjetoRoteirosAereos*. !!**
- 
- (Apague essa seção)
-
-# NomeDoProjeto
+# Recomendation System
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo**: XX<br>
-**Paradigma**: XXXXXXXXXX<br>
+**Nro do Grupo**: 02<br>
+**Paradigma**: Funcional<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 18/0016563  |  Filipe Santana Machado |
+| 18/0014412  |  Cainã Valença de Freitas |
+| 16/0015006  |  Mateus Oliveira Patricio |
+| 18/0011308  |  Peniel Etèmana Désirez-Jésus Zannoukou |
+| 17/0122468  |  Nilvan Peres Costa |
+| 18/0105345  |  Lucas Lima Ferraz |
+| 18/0078640  |  Yuri Alves Bacarias |
 
 ## Sobre 
 Descreva o seu projeto em linhas gerais. 
