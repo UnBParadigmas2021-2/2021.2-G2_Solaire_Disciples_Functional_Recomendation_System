@@ -94,5 +94,8 @@ sPaths g a b = do
                   bfs = bfsl g a
                   adj_ b lb = catMaybes [find ((v, lb-1) ==) bfs | v <- adj g b]
 
-foaf :: Eq a => Graph a -> a -> a
-foaf g a = head (adj g a)
+remove :: Eq a => a -> [a] -> [a]
+remove element list = filter (\e -> e/=element) list
+
+foaf :: Eq a => Graph a -> a -> [[a]]
+foaf g a = filter (not . null)(map (remove a) (map (adj g) (adj g a)))
