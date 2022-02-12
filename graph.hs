@@ -135,3 +135,7 @@ addAllPeopleScore g a list = map(addPeopleScore g a) list
 -- Transforma um no em uma tupla sendo (score, id)
 addPeopleScore :: Eq b => Graph b -> b -> b -> (Int, b)
 addPeopleScore g a b = (countCommonFriends g a b, b)
+
+-- Ordena nó por quantidade total de amigos em comum
+sortByCommonFriends :: Ord b1 => [(b1, b2)] -> [(b1, b2)]
+sortByCommonFriends a = reverse (sortOn fst a)
