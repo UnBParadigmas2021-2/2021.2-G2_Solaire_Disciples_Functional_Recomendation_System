@@ -100,8 +100,10 @@ remove :: Eq a => a -> [a] -> [a]
 remove element list = filter (\e -> e/=element) list
 
 foaf :: Eq a => Graph a -> a -> [[a]]
-foaf g a = map (adj g) (adj g a)
+foaf g a = map (getFriends g) (getFriends g a)
 
 getIgnoredElements :: Eq a => Graph a -> a -> [a]
-getIgnoredElements g a = [a] ++ adj g a
+getIgnoredElements g a = a : adj g a
 
+getFriends :: Eq a => Graph a -> a -> [a]
+getFriends = adj
