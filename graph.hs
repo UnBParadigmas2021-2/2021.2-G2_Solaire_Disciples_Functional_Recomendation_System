@@ -115,4 +115,4 @@ getFriends = adj
 
 -- Retorna amigos em comum entre elemento 'a' e 'b'
 getCommonFriends :: Eq a => Graph a -> a -> a -> [a]
-getCommonFriends g a b = intersect (getFriends g a) (getFriends g b)
+getCommonFriends g a b = getFriends g a `intersect` getFriends g b
