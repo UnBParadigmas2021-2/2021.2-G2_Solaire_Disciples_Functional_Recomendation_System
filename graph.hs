@@ -3,6 +3,7 @@ import Control.Monad ( join )
 import Data.List ( find, (\\), nub )
 import Data.Maybe ( catMaybes, fromJust )
 
+
 newtype Uedge a = Ue (a,a) deriving Show
 
 (<->) :: a -> a -> Uedge a
@@ -13,8 +14,9 @@ instance Eq a => Eq (Uedge a) where
 
 newtype Graph a = G [Uedge a] deriving Show
 
-g :: Graph Char
-g = G [Ue ('a','b'), Ue ('b','c') , Ue ('x','a'),Ue ('b','z'),Ue ('z','c'),Ue ('a','w'),Ue ('c','w')]
+
+g :: Graph Integer
+g = G [Ue (1, 2), Ue (2,3) , Ue (7,1),Ue (2,8),Ue (8,3),Ue (1,9),Ue (3,7)]
 
 vertices :: Eq a => Graph a -> [a]
 vertices (G l) = nub.join $ [ [a,b] | (Ue (a,b)) <- l]
@@ -98,4 +100,5 @@ remove :: Eq a => a -> [a] -> [a]
 remove element list = filter (\e -> e/=element) list
 
 foaf :: Eq a => Graph a -> a -> [[a]]
-foaf g a = filter (not . null)(map (remove a) (map (adj g) (adj g a)))
+foaf g a = map (adj g) (adj g a)
+
