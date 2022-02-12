@@ -92,3 +92,6 @@ sPaths g a b = do
                               | a /=b = (b:) <$> concat (ps a <$> adj_ b lb)
                   bfs = bfsl g a
                   adj_ b lb = catMaybes [find ((v, lb-1) ==) bfs | v <- adj g b]
+
+firstNode :: Eq a => Graph a -> a -> a
+firstNode g a = head (adj g a)
