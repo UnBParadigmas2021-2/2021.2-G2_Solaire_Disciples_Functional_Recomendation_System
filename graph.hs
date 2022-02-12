@@ -1,3 +1,4 @@
+{-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 import Control.Monad ( join )
 import Data.List ( find, (\\), nub )
 import Data.Maybe ( catMaybes, fromJust )
@@ -93,5 +94,5 @@ sPaths g a b = do
                   bfs = bfsl g a
                   adj_ b lb = catMaybes [find ((v, lb-1) ==) bfs | v <- adj g b]
 
-firstNode :: Eq a => Graph a -> a -> a
-firstNode g a = head (adj g a)
+foaf :: Eq a => Graph a -> a -> a
+foaf g a = head (adj g a)
