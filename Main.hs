@@ -3,6 +3,7 @@
 
 import Recomendation
 import Graph
+import Identification
 
 main :: IO ()
 main = do

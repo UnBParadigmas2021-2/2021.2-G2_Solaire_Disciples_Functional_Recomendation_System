@@ -27,7 +27,14 @@ people = Map.fromList [(1, "Joao Pe de Feijao")
                       ,(16, "Marilia Mendonca")
                       ,(17, "Linus Tech Tips")]
 
+-- Encontra o nome relacionado ao id
+-- Caso o id nao esteja na lista de nomes gerados, eh retornado um clone das sombras do naruto
 findPeopleById :: Integer -> String
 findPeopleById id = case Map.lookup id people of
                  Nothing  -> "Kage Bushin no Jutsu No. " ++ show id
                  Just name -> name
+
+-- A função de recomendação retorna objetos contendo (score, id)
+-- Essa função traduz o id para o nome
+findPeopleByTuple :: (a, Integer) -> String
+findPeopleByTuple tuple = findPeopleById (snd tuple)
