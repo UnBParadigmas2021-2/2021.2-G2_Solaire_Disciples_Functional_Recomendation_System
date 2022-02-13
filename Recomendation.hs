@@ -40,7 +40,7 @@ concatList x y = nub (x ++ y)
 countFriends :: Eq a => Graph a -> a -> Int
 countFriends g a = length( getFriends g a)
 
--- Conta quantos amigos o nó 'a' tem em comum com o no 'b'
+-- Conta quantos amigos o no 'a' tem em comum com o no 'b'
 countCommonFriends :: Eq a => Graph a -> a -> a -> Int
 countCommonFriends g a b = length(getCommonFriends g a b)
 
