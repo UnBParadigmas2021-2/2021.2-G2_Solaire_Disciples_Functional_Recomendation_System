@@ -4,6 +4,7 @@
 import Recomendation
 import Graph
 import Identification
+import NetworkExamples
 
 main :: IO ()
 main = do
