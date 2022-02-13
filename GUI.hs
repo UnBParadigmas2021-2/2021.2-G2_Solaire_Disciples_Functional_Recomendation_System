@@ -32,8 +32,6 @@ main = do
 
     widgetShowAll window -- mostra a janela com as options
 
-    
-
 
     mainGUI -- loop da aplicação
 
