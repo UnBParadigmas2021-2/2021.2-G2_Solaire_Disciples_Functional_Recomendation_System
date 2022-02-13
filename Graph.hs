@@ -22,7 +22,7 @@ instance Eq a => Eq (Uedge a) where
 newtype Graph a = G [Uedge a] deriving Show
 
 
-g :: Graph Integer
+g :: Graph Int
 g = G [Ue (1, 2), Ue (2,3) , Ue (7,1),Ue (2,8),Ue (8,3),Ue (1,9),Ue (3,7)]
 
 vertices :: Eq a => Graph a -> [a]

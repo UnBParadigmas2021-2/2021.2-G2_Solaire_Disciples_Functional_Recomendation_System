@@ -7,4 +7,4 @@ import Identification
 
 main :: IO ()
 main = do
-    print (generateRecomendations g 1)
+    print("susu")

@@ -7,8 +7,11 @@ module Identification where
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Maybe (fromMaybe)
+import Control.Monad (join)
+import Data.List (nub)
+import qualified GHC.Types
 
-people :: Map Integer String 
+people :: Map Int String
 people = Map.fromList [(1, "Joao Pe de Feijao")
                       ,(2, "Maria Silva Sousa")
                       ,(3, "Pedro Marcos")
@@ -29,12 +32,24 @@ people = Map.fromList [(1, "Joao Pe de Feijao")
 
 -- Encontra o nome relacionado ao id
 -- Caso o id nao esteja na lista de nomes gerados, eh retornado um clone das sombras do naruto
-findPeopleById :: Integer -> String
+findPeopleById :: Int -> String
 findPeopleById id = case Map.lookup id people of
                  Nothing  -> "Kage Bushin no Jutsu No. " ++ show id
                  Just name -> name
 
 -- A função de recomendação retorna objetos contendo (score, id)
 -- Essa função traduz o id para o nome
-findPeopleByTuple :: (a, Integer) -> String
-findPeopleByTuple tuple = findPeopleById (snd tuple)
+findPeopleNameByTuple :: (a, Int) -> String
+findPeopleNameByTuple tuple = findPeopleById (snd tuple)
+
+peopleScoreToString :: (Int, a) -> String
+peopleScoreToString tuple = "Possui " ++ show (fst tuple) ++ " amigos em comum com voce!"
+
+peopleRecomendationToString :: (Int, Int) -> String
+peopleRecomendationToString tuple = findPeopleNameByTuple tuple ++ "\n" ++ peopleScoreToString tuple ++ "\n"
+
+printPeople :: (Int, Int) -> IO ()
+printPeople tuple = putStrLn (peopleRecomendationToString tuple)
+
+getAllRecomendationsString :: [(Int, Int)] -> [String]
+getAllRecomendationsString recomendationList = map peopleRecomendationToString recomendationList
