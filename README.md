@@ -1,6 +1,5 @@
 # RepositorioTemplate
 
-
 # Recomendation System
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
@@ -8,30 +7,58 @@
 **Paradigma**: Funcional<br>
 
 ## Alunos
-|Matrícula | Aluno |
-| -- | -- |
-| 18/0016563  |  Filipe Santana Machado |
-| 18/0014412  |  Cainã Valença de Freitas |
-| 16/0015006  |  Mateus Oliveira Patricio |
-| 18/0011308  |  Peniel Etèmana Désirez-Jésus Zannoukou |
-| 17/0122468  |  Nilvan Peres Costa |
-| 18/0105345  |  Lucas Lima Ferraz |
-| 18/0078640  |  Yuri Alves Bacarias |
-| 17/0141161  |  Erick Giffoni |
 
-## Sobre 
-Descreva o seu projeto em linhas gerais. 
+| Matrícula  | Aluno                                  |
+| ---------- | -------------------------------------- |
+| 18/0016563 | Filipe Santana Machado                 |
+| 18/0014412 | Cainã Valença de Freitas               |
+| 16/0015006 | Mateus Oliveira Patricio               |
+| 18/0011308 | Peniel Etèmana Désirez-Jésus Zannoukou |
+| 17/0122468 | Nilvan Peres Costa                     |
+| 18/0105345 | Lucas Lima Ferraz                      |
+| 18/0078640 | Yuri Alves Bacarias                    |
+| 17/0141161 | Erick Giffoni                          |
+
+## Sobre
+
+Descreva o seu projeto em linhas gerais.
 
 ## Screenshots
+
 Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
 
-## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
+## Instalação
+
+**Linguagens**: Haskell<br>
+**Tecnologias**: gi-gtk<br>
 Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 Insira um manual ou um script para auxiliar ainda mais.
 
-## Uso 
+Instalação dos pacotes:
+Please see [gi-gtk](https://github.com/haskell-gi/haskell-gi)
+
+### Ubuntu
+
+```
+sudo apt-get install libghc-gtk-dev
+sudo apt-get install libcanberra-gtk-module
+cabal update
+cabal install gtk2hs-buildtools
+cabal install gtk
+```
+
+### Mac OSX
+
+Install [Homebrew](https://brew.sh/) and install GTK+ and GObject Introspection:
+
+```
+brew install gobject-introspection gtk+ gtk+3
+```
+
+Ensure the path to libffi (probably `/usr/local/opt/libffi/lib/pkgconfig`) is in the PKG_CONFIG_PATH environment variable.
+
+## Uso
+
 Explique como usar seu projeto, caso haja algum passo a passo após o comando de execução.
 
 exemplos de comandos:
@@ -74,11 +101,15 @@ output: [('a',0),('b',1),('x',1),('w',1),('c',2),('z',2)]
 output: Just ["cba","cwa"]
 
 ```
+
 ## Vídeo
+
 Adicione 1 ou mais vídeos com a execução do projeto.
 
-## Outros 
+## Outros
+
 Quaisquer outras informações sobre seu projeto podem ser descritas a seguir.
 
 ## Fontes
+
 Caso utilize materiais de terceiros, referencie-os adequadamente.
