@@ -1,5 +1,8 @@
 {-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 {-# LANGUAGE FlexibleContexts #-}
+
+module Graph where
+
 import Control.Monad ( join )
 import Data.List ( find, (\\), nub, intersect, sortBy, sortOn )
 import Data.Maybe ( catMaybes, fromJust )
