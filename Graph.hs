@@ -1,5 +1,8 @@
 {-# OPTIONS_GHC -Wno-incomplete-patterns #-}
 {-# LANGUAGE FlexibleContexts #-}
+
+module Graph where
+
 import Control.Monad ( join )
 import Data.List ( find, (\\), nub, intersect, sortBy, sortOn )
 import Data.Maybe ( catMaybes, fromJust )
@@ -19,7 +22,7 @@ instance Eq a => Eq (Uedge a) where
 newtype Graph a = G [Uedge a] deriving Show
 
 
-g :: Graph Integer
+g :: Graph Int
 g = G [Ue (1, 2), Ue (2,3) , Ue (7,1),Ue (2,8),Ue (8,3),Ue (1,9),Ue (3,7)]
 
 vertices :: Eq a => Graph a -> [a]
@@ -100,46 +103,3 @@ sPaths g a b = do
                   bfs = bfsl g a
                   adj_ b lb = catMaybes [find ((v, lb-1) ==) bfs | v <- adj g b]
 
-
--- amigo dos amigo
-foaf :: Eq a => Graph a -> a -> [a]
-foaf g a = nub(join(map (getFriends g) (getFriends g a))) \\ getIgnoredElements g a
-
--- Retorna lista de elementos a serem ignorados
--- No caso, retorna lista com o elemento 'a' (inicial) e os amigos de 'a'
-getIgnoredElements :: Eq a => Graph a -> a -> [a]
-getIgnoredElements g a = a : getFriends g a
-
--- Retorna amigos do elemento 'a'
-getFriends :: Eq a => Graph a -> a -> [a]
-getFriends = adj
-
--- Retorna amigos em comum entre elemento 'a' e 'b'
-getCommonFriends :: Eq a => Graph a -> a -> a -> [a]
-getCommonFriends g a b = getFriends g a `intersect` getFriends g b
-
--- Concatena duas listas sem inserir duplicatas
-concatList:: [Int] -> [Int] -> [Int]
-concatList x y = nub (x ++ y)
-
--- Conta quantos amigos o no 'a' tem em comum com o no 'b'
-
--- TODO -> Recommend by influence -> substituir o length (que considera cada amigo como 1)
--- por um sistema que penaliza o score baseado em quantos amigos cada item de getCommonFriends tem (n). -> 1/n1 + 1/n2 + 1/n3 ...
--- exemplo: https://courses.cs.washington.edu/courses/cse140/13wi/homework/hw4/homework4.html problem 3
-countCommonFriends :: Eq a => Graph a -> a -> a -> Int
-countCommonFriends g a b = length(getCommonFriends g a b)
-
-
-
--- Transforma toda a lista de no em (score, id)
-addAllPeopleScore :: Eq b => Graph b -> b -> [b] -> [(Int, b)]
-addAllPeopleScore g a list = map(addPeopleScore g a) list
-
--- Transforma um no em uma tupla sendo (score, id)
-addPeopleScore :: Eq b => Graph b -> b -> b -> (Int, b)
-addPeopleScore g a b = (countCommonFriends g a b, b)
-
--- Ordena nó por quantidade total de amigos em comum
-sortByCommonFriends :: Ord b1 => [(b1, b2)] -> [(b1, b2)]
-sortByCommonFriends a = reverse (sortOn fst a)
