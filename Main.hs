@@ -5,6 +5,7 @@ import Recomendation
 import RecomendationInfluence
 import Graph
 import Identification
+import NetworkExamples
 
 main :: IO ()
 main = do
