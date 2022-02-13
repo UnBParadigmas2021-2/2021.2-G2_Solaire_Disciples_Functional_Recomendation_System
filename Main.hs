@@ -2,6 +2,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 
 import Recomendation
+import RecomendationInfluence
 import Graph
 import Identification
 

@@ -36,11 +36,15 @@ concatList x y = nub (x ++ y)
 -- por um sistema que penaliza o score baseado em quantos amigos cada item de getCommonFriends tem (n). -> 1/n1 + 1/n2 + 1/n3 ...
 -- exemplo: https://courses.cs.washington.edu/courses/cse140/13wi/homework/hw4/homework4.html problem 3
 
--- Conta quantos amigos o no 'a' tem em comum com o no 'b'
+-- Conta quantos amigos tem 'a'
+countFriends :: Eq a => Graph a -> a -> Int
+countFriends g a = length( getFriends g a)
+
+-- Conta quantos amigos o nó 'a' tem em comum com o no 'b'
 countCommonFriends :: Eq a => Graph a -> a -> a -> Int
 countCommonFriends g a b = length(getCommonFriends g a b)
 
--- Transforma toda a lista de no em (score, id)
+-- Transforma toda a lista de nó em (score, id)
 addAllPeopleScore :: Eq b => Graph b -> b -> [b] -> [(Int, b)]
 addAllPeopleScore g a list = map(addPeopleScore g a) list
 
