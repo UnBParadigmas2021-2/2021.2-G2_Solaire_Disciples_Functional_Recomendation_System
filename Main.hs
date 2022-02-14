@@ -25,8 +25,23 @@ data Person = Person
 main = scotty 3000 $ do
   get "/" $ do
     render [shamlet|
-      <p>Meu nome: #{name person}<p>
-      <p>Meu Id:#{show $ _id person}<p>
+      <head>
+        <h1.h> Recomendation System
+      <body>
+        <p>Nome: #{name person}
+        <p>Id:#{show $ _id person}
+        
+        <p>Lista de amigos:
+          <ul>
+            $forall friend <- friends
+              <li>#{friend}
+
+        <p>Recomendacao de amigos:
+          <ul>
+            $forall friend <- recomend_friends
+              <li>#{friend}
     |]
   where
     person = Person (findPeopleById 1) (1)
+    recomend_friends = getAllRecomendationsString (generateRecomendations g 1)
+    friends = getAllFriendsString(getFriends g 1)
