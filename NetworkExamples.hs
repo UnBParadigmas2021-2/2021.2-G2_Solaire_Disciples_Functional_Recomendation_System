@@ -4,6 +4,8 @@
 module NetworkExamples where
 
 import Graph
+import qualified Data.Map as Map
+import Data.Map (Map)
 
 network01 :: Graph Int
 network01 = G [Ue (1,2)
@@ -25,3 +27,23 @@ network01 = G [Ue (1,2)
               ,Ue (10,14)
               ,Ue (17,12)
               ,Ue (17,9)]
+
+network02 :: Graph Int
+network02 = G [Ue (1, 2)
+              ,Ue (2,3) 
+              ,Ue (7,1)
+              ,Ue (2,8)
+              ,Ue (8,3)
+              ,Ue (1,9)
+              ,Ue (3,7)]
+
+
+
+ 
+exampleMap :: Map Integer (Graph Int)
+exampleMap = Map.fromList [(1,network01), (2,network02)]
+
+findGraphById :: Integer -> Graph Int
+findGraphById id = case Map.lookup id exampleMap of
+                 Nothing  -> findGraphById (id -1)
+                 Just graph -> graph
