@@ -19,11 +19,23 @@ newtype Uedge a = Ue (a,a) deriving Show
 instance Eq a => Eq (Uedge a) where
   (==) (Ue (a,b)) (Ue (a1,b1)) = a == a1 &&  b==b1 || a==b1 && b==a1
 
-newtype Graph a = G [Uedge a] deriving Show
+newtype Graph a = G [Uedge a] deriving Show 
 
+-- addNodeInGraph :: (Graph a -> Graph a -> t) -> a -> a -> t
+-- addNodeInGraph g a b = g ++ G[(newNode a b)]
+
+newNode :: a -> a -> Uedge a
+newNode a b = Ue(a, b)
 
 g :: Graph Int
 g = G [Ue (1, 2), Ue (2,3) , Ue (7,1),Ue (2,8),Ue (8,3),Ue (1,9),Ue (3,7)]
+
+add :: Graph a -> Uedge a -> Graph a
+add (G l) e = G $ e:l
+
+
+add_node :: Graph a -> a -> a -> Graph a
+add_node g n b = add g $ Ue (n,b)
 
 vertices :: Eq a => Graph a -> [a]
 vertices (G l) = nub.join $ [ [a,b] | (Ue (a,b)) <- l]
