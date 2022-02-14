@@ -55,3 +55,8 @@ getAllRecomendationsString :: [(Int, Int)] -> [String]
 getAllRecomendationsString recomendationList = map peopleRecomendationToString recomendationList
 
 
+peopleFriendToString :: Int -> [Char]
+peopleFriendToString a = findPeopleById a ++ "\n"
+
+getAllFriendsString :: [Int] -> [[Char]]
+getAllFriendsString friendList = map peopleFriendToString friendList
