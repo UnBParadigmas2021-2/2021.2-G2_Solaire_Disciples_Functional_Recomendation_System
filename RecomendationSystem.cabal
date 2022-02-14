@@ -37,7 +37,9 @@ executable RecomendationSystem
                        , scotty
                        , text
                        , bytestring
+                       , shakespeare
                        , blaze-html
+                       , blaze-markup
                        , monad-logger
                        , transformers
                        , wai-middleware-static
