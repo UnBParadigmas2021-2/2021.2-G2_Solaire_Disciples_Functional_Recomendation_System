@@ -24,8 +24,7 @@ data Person = Person
 
 main :: IO ()
 main = scotty 3000 $ do
-  get "/:id" $ do
-    beam <- param "id"
+  get "/" $ do
     render [shamlet|
       <style>
         span {display: inline-block; padding:0px 40px; border: 1px solid}
