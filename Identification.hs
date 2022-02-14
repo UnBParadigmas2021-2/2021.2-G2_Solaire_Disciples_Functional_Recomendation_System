@@ -53,3 +53,5 @@ printPeople tuple = putStrLn (peopleRecomendationToString tuple)
 
 getAllRecomendationsString :: [(Int, Int)] -> [String]
 getAllRecomendationsString recomendationList = map peopleRecomendationToString recomendationList
+
+
