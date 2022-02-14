@@ -20,65 +20,32 @@
 | 17/0141161  |  Erick Giffoni |
 
 ## Sobre 
-Descreva o seu projeto em linhas gerais. 
+Sistema de recomendação de amizades para rede social utilizando grafos.
 
 ## Screenshots
-Adicione 2 ou mais screenshots do projeto em termos de interface e/ou funcionamento.
+![image](https://user-images.githubusercontent.com/37383185/153957986-d2ef85c3-7128-4f58-a9da-89fff36d049e.png)
+![image](https://user-images.githubusercontent.com/37383185/153958106-ba34ff97-6f83-44c2-a617-7cb3a7f3fe2c.png)
 
 ## Instalação 
-**Linguagens**: xxxxxx<br>
-**Tecnologias**: xxxxxx<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
-Insira um manual ou um script para auxiliar ainda mais.
+**Linguagens**: Haskell<br>
+**Tecnologias**: Cabal, Hamlet e Scotty<br>
+
+Instação no Ubuntu
+```shell
+$ sudo apt-get install -y cabal-install
+$ cabal update
+$ cabal install
+```
 
 ## Uso 
-Explique como usar seu projeto, caso haja algum passo a passo após o comando de execução.
-
-exemplos de comandos:
-
-```haskell
-*Main> adj g 'a'
-output: "bxw"
-
-*Main> isAdj g 'a' 'b'
-output: True
-
-*Main> isWalk g ['a', 'b', 'c']
-output: True
-
-*Main> connectNearestUe ['a', 'b', 'c']
-output: [Ue ('a','b'),Ue ('b','c')]
-
-*Main> isTrail g ['a', 'b', 'c']
-output: True
-
-*Main> open g ['a', 'b']
-output: True
-
-*Main> close g ['a', 'b', 'y']
-output: True
-
-*Main> paths g [] 'a' 'c'
-output: ["cba","czba","cwa"]
-
-*Main> dfs g 'b'
-output: "baxwcz"
-
-*Main> bfs g [] ['a']
-output: "abxwcz"
-
-*Main> bfsL g [] [('a',0)]
-output: [('a',0),('b',1),('x',1),('w',1),('c',2),('z',2)]
-
-*Main> sPaths g 'a' 'c'
-output: Just ["cba","cwa"]
-
+```shell
+$ cabal run
 ```
 ## Vídeo
 Adicione 1 ou mais vídeos com a execução do projeto.
 
 ## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas a seguir.
+O projeto utiliza grafos para recomendar amigos de amigo e em comum a partir de influência.
 
 ## Fontes
-Caso utilize materiais de terceiros, referencie-os adequadamente.
+> MALOV, Evgeniy. Graphs with Haskell (part 1). Youtube, 25/12/2021. Diponível em https://www.youtube.com/watch?v=RS7eIkETdIQ. Acesso em: 14/02/2022.
