@@ -60,3 +60,13 @@ peopleFriendToString a = findPeopleById a ++ "\n"
 
 getAllFriendsString :: [Int] -> [[Char]]
 getAllFriendsString friendList = map peopleFriendToString friendList
+
+
+getAllRecomendatonInfluenceString :: Show a => [(a, Int)] -> [[Char]]
+getAllRecomendatonInfluenceString recomendationList = map peopleRecomendationInfluenceToString recomendationList
+
+peopleRecomendationInfluenceToString :: Show a => (a, Int) -> [Char]
+peopleRecomendationInfluenceToString tuple = findPeopleNameByTuple tuple ++ "\n" ++ peopleInfluenceScoreToString tuple ++ "\n"
+
+peopleInfluenceScoreToString :: Show a => (a, b) -> [Char]
+peopleInfluenceScoreToString tuple = "Possui " ++ show (fst tuple) ++ " de score de recomendacao com voce!"
