@@ -22,8 +22,10 @@ data Person = Person
     }
 
 
+main :: IO ()
 main = scotty 3000 $ do
-  get "/" $ do
+  get "/:id" $ do
+    beam <- param "id"
     render [shamlet|
       <style>
         span {display: inline-block; padding:0px 40px; border: 1px solid}
@@ -53,6 +55,6 @@ main = scotty 3000 $ do
     |]
   where
     person = Person (findPeopleById 1) (1)
-    recomend_friends = getAllRecomendationsString (generateRecomendations g 1)
-    recomend_by_influence_friends = getAllRecomendatonInfluenceString(generateRecomendationsByInfluence g 1)
-    friends = getAllFriendsString(getFriends g 1)
+    recomend_friends = getAllRecomendationsString (generateRecomendations (findGraphById 1) 1)
+    recomend_by_influence_friends = getAllRecomendatonInfluenceString(generateRecomendationsByInfluence (findGraphById 1) 1)
+    friends = getAllFriendsString(getFriends (findGraphById 1) 1)
