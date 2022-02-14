@@ -25,23 +25,34 @@ data Person = Person
 main = scotty 3000 $ do
   get "/" $ do
     render [shamlet|
+      <style>
+        span {display: inline-block; padding:0px 40px; border: 1px solid}
+
       <head>
         <h1.h> Recomendation System
       <body>
         <p>Nome: #{name person}
         <p>Id:#{show $ _id person}
-        
         <p>Lista de amigos:
-          <ul>
+          <ol>
             $forall friend <- friends
               <li>#{friend}
 
-        <p>Recomendacao de amigos:
-          <ul>
-            $forall friend <- recomend_friends
-              <li>#{friend}
+        <span>
+          <p>Recomendacao de amigos (padrao):
+            <ol>
+              $forall friend <- recomend_friends
+                <li>#{friend}
+
+        <span>
+          <p>Recomendacao de amigos (influencia):
+            <ol>
+              $forall friend <- recomend_by_influence_friends
+                <li>#{friend}
+          
     |]
   where
     person = Person (findPeopleById 1) (1)
     recomend_friends = getAllRecomendationsString (generateRecomendations g 1)
+    recomend_by_influence_friends = getAllRecomendatonInfluenceString(generateRecomendationsByInfluence g 1)
     friends = getAllFriendsString(getFriends g 1)
