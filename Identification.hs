@@ -48,11 +48,15 @@ peopleScoreToString tuple = "Possui " ++ show (fst tuple) ++ " amigos em comum c
 peopleRecomendationToString :: (Int, Int) -> String
 peopleRecomendationToString tuple = findPeopleNameByTuple tuple ++ "\n" ++ peopleScoreToString tuple ++ "\n"
 
+peopleRecomendationTuple :: (Int, Int) -> (String, String)
+peopleRecomendationTuple tuple = (findPeopleNameByTuple tuple, peopleScoreToString tuple)
+
 printPeople :: (Int, Int) -> IO ()
 printPeople tuple = putStrLn (peopleRecomendationToString tuple)
 
-getAllRecomendationsString :: [(Int, Int)] -> [String]
-getAllRecomendationsString recomendationList = map peopleRecomendationToString recomendationList
+
+getAllRecomendationsString :: [(Int, Int)] -> [(String, String)]
+getAllRecomendationsString recomendationList = map peopleRecomendationTuple recomendationList
 
 
 peopleFriendToString :: Int -> [Char]
@@ -62,11 +66,13 @@ getAllFriendsString :: [Int] -> [[Char]]
 getAllFriendsString friendList = map peopleFriendToString friendList
 
 
-getAllRecomendatonInfluenceString :: Show a => [(a, Int)] -> [[Char]]
+
+getAllRecomendatonInfluenceString :: Show a => [(a, Int)] -> [(String, [Char])]
 getAllRecomendatonInfluenceString recomendationList = map peopleRecomendationInfluenceToString recomendationList
 
-peopleRecomendationInfluenceToString :: Show a => (a, Int) -> [Char]
-peopleRecomendationInfluenceToString tuple = findPeopleNameByTuple tuple ++ "\n" ++ peopleInfluenceScoreToString tuple ++ "\n"
+
+peopleRecomendationInfluenceToString :: Show a => (a, Int) -> (String, [Char])
+peopleRecomendationInfluenceToString tuple = (findPeopleNameByTuple tuple, peopleInfluenceScoreToString tuple)
 
 peopleInfluenceScoreToString :: Show a => (a, b) -> [Char]
 peopleInfluenceScoreToString tuple = "Possui " ++ show (fst tuple) ++ " de score de recomendacao com voce!"
