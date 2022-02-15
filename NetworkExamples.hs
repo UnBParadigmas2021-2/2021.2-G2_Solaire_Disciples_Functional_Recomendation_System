@@ -37,11 +37,28 @@ network02 = G [Ue (1, 2)
               ,Ue (1,9)
               ,Ue (3,7)]
 
-
-
+network03 :: Graph Int
+network03 = G [Ue (1, 2)
+              ,Ue (1, 5)
+              ,Ue (1,6)
+              ,Ue (6,17)
+              ,Ue (2,3)
+              ,Ue (3,7)
+              ,Ue (3,10)
+              ,Ue (5,8)
+              ,Ue (5,10)
+              ,Ue (8,10)
+              ,Ue (8,14)
+              ,Ue (14,12)
+              ,Ue (12,11)
+              ,Ue (12,10)
+              ,Ue (11,10)
+              ,Ue (11,9)
+              ,Ue (11,7)
+              ,Ue (7,10)]
  
 exampleMap :: Map Integer (Graph Int)
-exampleMap = Map.fromList [(1,network01), (2,network02)]
+exampleMap = Map.fromList [(1,network01), (2,network02), (3,network03)]
 
 findGraphById :: Integer -> Graph Int
 findGraphById id = case Map.lookup id exampleMap of
