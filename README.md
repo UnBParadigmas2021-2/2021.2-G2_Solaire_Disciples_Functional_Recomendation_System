@@ -80,7 +80,7 @@ São as variáveis `person_id` e `graph_id` presentes no arquivo `Main.hs`.
 Após essas alterações, basta executar no shell `cabal run` e as alterações estarão presentes no site.
 
 ## Vídeo
-Adicione 1 ou mais vídeos com a execução do projeto.
+https://youtu.be/SHrgjtrc78I
 
 ## Outros 
 Há algumas implementações que ficaram pendentes, tais como:
