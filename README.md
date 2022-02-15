@@ -1,6 +1,3 @@
-# RepositorioTemplate
-
-
 # Recomendation System
 
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
