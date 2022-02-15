@@ -41,8 +41,9 @@ main = scotty 3000 $ do
           justify-content: center;
         }
         .li-friend {
-          height: 50px;
-          max-height: 50px;
+          height: 100px;
+          max-height: 100px;
+          font-size: 18px;
         }
         .center {
           text-align: center;
@@ -63,6 +64,19 @@ main = scotty 3000 $ do
         .fix-space {
           margin: 0px;
         }
+        .image {
+          width: 800px;
+          height: 600px;
+          position: absolute;
+          right: 0%;
+          top: 0%;
+        }
+        .title {
+          font-size: 22px;
+        }
+        .subtitle {
+          font-size: 14px;
+        }
 
       <head>
         <h1.h> Recomendation System
@@ -75,28 +89,29 @@ main = scotty 3000 $ do
               <li>#{friend}
 
         <span class="center">
-          <p>Recomendacao de amigos (padrao):
+          <p class="title">Recomendacao de amigos (padrao):
             <ol>
               $forall friend <- recomend_friends
                 <li class="li-friend">
                   <div class="friend">
                     <h4 class="fix-space">#{fst friend}
-                    <p class="fix-space">#{snd friend}
+                    <p class="fix-space subtitle">#{snd friend}
 
         <span class="center">
-          <p>Recomendacao de amigos (influencia):
+          <p class="title">Recomendacao de amigos (influencia):
             <ol>
               $forall friend <- recomend_by_influence_friends
                 <li class="li-friend">
                   <div class="friend">
                     <h4 class="fix-space">#{fst friend}
-                    <p class="fix-space">#{snd friend}
-          
+                    <p class="fix-space subtitle">#{snd friend}
+        <img class="image" src=#{graph_image}>
     |]
   where
-    person_id = 10
+    person_id = 1
     graph_id = 1
     person = Person (findPeopleById person_id) (person_id)
     recomend_friends = getAllRecomendationsString (generateRecomendations (findGraphById graph_id) person_id)
     recomend_by_influence_friends = getAllRecomendatonInfluenceString(generateRecomendationsByInfluence (findGraphById graph_id) person_id)
     friends = getAllFriendsString(getFriends (findGraphById graph_id) person_id)
+    graph_image = getGraphImage graph_id

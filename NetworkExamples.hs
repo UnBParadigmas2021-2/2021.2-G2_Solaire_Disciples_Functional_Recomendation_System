@@ -6,6 +6,7 @@ module NetworkExamples where
 import Graph
 import qualified Data.Map as Map
 import Data.Map (Map)
+import qualified Data.Maybe
 
 network01 :: Graph Int
 network01 = G [Ue (1,2)
@@ -30,7 +31,7 @@ network01 = G [Ue (1,2)
 
 network02 :: Graph Int
 network02 = G [Ue (1, 2)
-              ,Ue (2,3) 
+              ,Ue (2,3)
               ,Ue (7,1)
               ,Ue (2,8)
               ,Ue (8,3)
@@ -39,7 +40,7 @@ network02 = G [Ue (1, 2)
 
 
 
- 
+
 exampleMap :: Map Integer (Graph Int)
 exampleMap = Map.fromList [(1,network01), (2,network02)]
 
@@ -47,3 +48,12 @@ findGraphById :: Integer -> Graph Int
 findGraphById id = case Map.lookup id exampleMap of
                  Nothing  -> findGraphById (id -1)
                  Just graph -> graph
+
+
+imageMap :: Map Integer [Char]
+imageMap = Map.fromList [(1,"https://raw.githubusercontent.com/UnBParadigmas2021-2/2021.2-G2_Solaire_Disciples_Functional_Recomendation_System/master/NetworkExamplesImages/Network01.jpg")
+                        , (2,"")]
+
+
+getGraphImage :: Integer -> [Char]
+getGraphImage id = Data.Maybe.fromMaybe "" (Map.lookup id imageMap)
