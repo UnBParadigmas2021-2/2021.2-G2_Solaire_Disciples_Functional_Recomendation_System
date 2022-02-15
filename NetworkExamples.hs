@@ -69,7 +69,8 @@ findGraphById id = case Map.lookup id exampleMap of
 
 imageMap :: Map Integer [Char]
 imageMap = Map.fromList [(1,"https://raw.githubusercontent.com/UnBParadigmas2021-2/2021.2-G2_Solaire_Disciples_Functional_Recomendation_System/master/NetworkExamplesImages/Network01.jpg")
-                        , (2,"")]
+                        , (2,"https://raw.githubusercontent.com/UnBParadigmas2021-2/2021.2-G2_Solaire_Disciples_Functional_Recomendation_System/master/NetworkExamplesImages/Network02.jpg")
+                        , (3,"https://raw.githubusercontent.com/UnBParadigmas2021-2/2021.2-G2_Solaire_Disciples_Functional_Recomendation_System/master/NetworkExamplesImages/Network03.jpg")]
 
 
 getGraphImage :: Integer -> [Char]
